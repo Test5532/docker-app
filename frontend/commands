@@ -1,0 +1,13 @@
+
+docker build -t frontend_nodeapp . 
+
+Adding below network is not required as the code is browser based and all operation for code are done in browser itself
+
+docker run -it -d -p 3000:3000 --name frontend_app  \
+  --network multi_network \
+  -v /app/node_modules \
+  -v "/Users/karanbhandari/Downloads/docker_full_course/smulti-012-starting-setup/frontend/src:/app/src" \
+ frontend_nodeapp
+
+
+  

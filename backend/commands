@@ -1,0 +1,16 @@
+docker run -d --network multi_network  --name mongodb \
+        -v mongodata:/data/db \
+        -e MONGO_INITDB_ROOT_USERNAME=mongoadmin \
+        -e MONGO_INITDB_ROOT_PASSWORD=mongoadmin \
+        mongo
+
+docker run -d -p 80:80 --name backend_app  \
+  --network multi_network \
+  --env-file ./.env \
+  -v logs:/app/logs \
+  -v /app/node_modules \
+  -v "/Users/karanbhandari/Downloads/docker_full_course/smulti-012-starting-setup/backend:/app" \
+ backend_nodeapp
+
+ 
+ 
