@@ -25,34 +25,14 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Test5532/docker-app']]])
             }
         }
-        stage('Build and Deploy Backend') {
-            steps {
-                dir('backend') {
-                    // Navigate to the backend folder
-                    // Run build and deployment steps specific to the backend application
-                    sh 'npm install'
-                    sh 'npm run build'
-                    // Additional steps for deploying the backend
-                }
-            }
-        }
+
         stage('Checkout Frontend Code') {
             steps {
                 // Checkout the frontend code from the GitHub repository
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Test5532/docker-app.git']]])
             }
         }
-        stage('Build and Deploy Frontend') {
-            steps {
-                dir('frontend') {
-                    // Navigate to the frontend folder
-                    // Run build and deployment steps specific to the frontend application
-                    sh 'npm install'
-                    sh 'npm run build'
-                    // Additional steps for deploying the frontend
-                }
-            }
-        }
+
         stage("Build Docker Images") {
             steps {
                 script {
