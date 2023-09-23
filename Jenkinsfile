@@ -3,7 +3,7 @@ pipeline {
         label "jenkins-agent"
     }
     tools {
-        nodejs 'NodeJS-16' // Specify the Node.js tool installation name
+        nodejs 'node20.7.0' // Specify the Node.js tool installation name
     }
     environment {
         APP_NAME = "nodeapp"
@@ -23,7 +23,7 @@ pipeline {
         stage('Checkout Backend Code') {
             steps {
                 // Checkout the backend code from the GitHub repository
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Test5532/docker-app.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Test5532/docker-app']]])
             }
         }
         stage('Build and Deploy Backend') {
